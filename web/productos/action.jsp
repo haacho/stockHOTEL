@@ -13,22 +13,30 @@
     try {
         Integer id = Integer.valueOf(request.getParameter("id"));
         String action = request.getParameter("action");
-        String nombre = "";
-
+        String codigo = "";
+        String descripcion = "";
+        Integer cantidad = 1;
+        Double precioCosto = 1.0;
+        Double precioVenta = 1.0;
+        Integer idCategoria = -1;
         if (action.equals("B")) {
-            Categoria c = sistema.CATEGORIA_JPA_CONTROLLER.findCategoria(id);
-            sistema.CATEGORIA_JPA_CONTROLLER.destroy(id);
-            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Categoría eliminada correctamente"));
+            sistema.PRODUCTO_JPA_CONTROLLER.destroy(id);
+            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto correctamente"));
         } else {
-            nombre = request.getParameter("nombre");
+            codigo = request.getParameter("codigo");
+            descripcion = request.getParameter("descripcion");
+            cantidad = Integer.valueOf(request.getParameter("cantidad"));
+            precioCosto = Double.parseDouble(request.getParameter("precioCosto"));
+            precioVenta = Double.parseDouble(request.getParameter("precioVenta"));
+            idCategoria = Integer.valueOf(request.getParameter("idCategoria"));
         }
         if (action.equals("A")) {
-            sistema.CATEGORIA_JPA_CONTROLLER.create(nombre);
-            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Categoría <strong>" + nombre + "</strong> agregada correctamente"));
+            sistema.PRODUCTO_JPA_CONTROLLER.create(codigo, descripcion, cantidad, precioCosto, precioVenta, idCategoria);
+            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto <strong>" + codigo + "</strong> agregado correctamente"));
         }
         if (action.equals("M")) {
-            sistema.CATEGORIA_JPA_CONTROLLER.edit(id, nombre);
-            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Categoría editada correctamente"));
+            sistema.PRODUCTO_JPA_CONTROLLER.edit(id, codigo, descripcion, cantidad, precioCosto, precioVenta, idCategoria);
+            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto editado correctamente"));
         }
     } catch (Exception ex) {
         jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.ERROR, ex.getMessage()));

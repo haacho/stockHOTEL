@@ -4,18 +4,30 @@
     Author     : marcelo
 --%>
 
+<%@page import="modulos.StaticsMetods"%>
+<%@page import="modelo.Producto"%>
 <%@page import="persistencia.sistema"%>
 <%@page import="modelo.Categoria"%>
 <table class="table table-striped table-bordered table-hover" id="tbl">
     <thead>
         <tr>
-            <th>Nombre</th>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio Costo</th>
+            <th>Precio Venta</th>
+            <th>Categoria</th>
         </tr>
     </thead>
     <tbody>
-        <%for (Categoria c : sistema.CATEGORIA_JPA_CONTROLLER.findCategoriaEntities()) {%>
-        <tr idObj="<%= c.getId()%>">
-            <td><%=c.getNombre()%></td>
+        <%for (Producto p : sistema.PRODUCTO_JPA_CONTROLLER.findProductoEntities()) {%>
+        <tr idObj="<%= p.getId()%>">
+            <td><%=p.getCodigo()%></td>
+            <td><%=p.getDescripcion()%></td>
+            <td><%=p.getCantidad()%></td>
+            <td><%=StaticsMetods.parseDoubleMoneyToString(p.getPrecioCosto())%></td>
+            <td><%=StaticsMetods.parseDoubleMoneyToString(p.getPrecioVenta())%></td>
+            <td><%=p.getCategoria().getNombre()%></td>
         </tr>
         <%}%>
     </tbody>

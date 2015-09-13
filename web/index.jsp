@@ -113,6 +113,7 @@
         <script src="js/btn.js"></script>
         <script src="js/tbl.js"></script>
         <script src="js/gritter/js/jquery.gritter.js"></script>
+        <script src="js/money/jqueryPrice.js"></script>
 
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>

@@ -20,7 +20,7 @@
                         <a href="categorias/principal.jsp">Categorias</a>
                     </li>
                     <li>
-                        <a href="morris.html">Productos</a>
+                        <a href="productos/principal.jsp">Productos</a>
                     </li>
                 </ul>
             </li>
