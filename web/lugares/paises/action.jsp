@@ -13,24 +13,25 @@
     String jsonRespuesta = "";
     try {
         Integer id = Integer.valueOf(request.getParameter("id"));
-        String action = request.getParameter("action"),
-                nombre = "",
-                gentilicio = "",
-                prefTelefonico = "";                
+        String action = request.getParameter("action");
+        String nombre = "";
+        String gentilicio = "";
+        String prefTel = "";
         if (action.equals("B")) {
-            Pais c = sistema.PAIS_JPA_CONTROLLER.findPais(id);
             sistema.PAIS_JPA_CONTROLLER.destroy(id);
             jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "País eliminado correctamente"));
         } else {
             nombre = request.getParameter("nombre");
+            gentilicio = request.getParameter("gentilicio");
+            prefTel = request.getParameter("prefTel");
         }
         if (action.equals("A")) {
-            sistema.PAIS_JPA_CONTROLLER.create(nombre, gentilicio, prefTelefonico);
+            sistema.PAIS_JPA_CONTROLLER.create(nombre, gentilicio, prefTel);
             jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "El país <strong>" + nombre + "</strong> fue agregado correctamente"));
         }
         if (action.equals("M")) {
-            sistema.CATEGORIA_JPA_CONTROLLER.edit(id, nombre);
-            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Categoría editada correctamente"));
+            sistema.PAIS_JPA_CONTROLLER.edit(id, nombre, gentilicio, prefTel);
+            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Pais editado correctamente"));
         }
     } catch (Exception ex) {
         jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.ERROR, ex.getMessage()));

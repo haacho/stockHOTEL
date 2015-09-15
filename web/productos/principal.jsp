@@ -3,8 +3,10 @@
     Created on : 12-sep-2015, 10:33:23
     Author     : marcelo
 --%>
-
-<div id="divTbl"></div>
+<div>
+    <h1>Productos</h1>
+    <div id="divTbl"></div>
+</div>
 <div id="divBotones"></div>
 
 <script>

@@ -16,6 +16,7 @@
         String cantidad = "";
         String precioCosto = "";
         String precioVenta = "";
+        String stockMinimo = "";
         Integer idCategoria = -1;
         if (request.getParameter("action") != null) {
             action = request.getParameter("action");
@@ -30,6 +31,7 @@
             cantidad = sistema.PRODUCTO_JPA_CONTROLLER.getProductoCount(codigo).toString();
             precioCosto = p.getPrecioCosto().toString();
             precioVenta = p.getPrecioVenta().toString();
+            stockMinimo = p.getStockMinimo().toString();
             idCategoria = p.getCategoria().getId();
         }
 %>
@@ -49,11 +51,15 @@
     </div>
     <div class="form-group">
         <label>Precio Costo</label>
-        <input type="number" min="1" class="form-control" required="" id="inputPrecioCosto" placeholder="Precio Costo" value="<%=precioCosto%>">
+        <input type="text" min="1" class="form-control moneda" required="" id="inputPrecioCosto" placeholder="Precio Costo" value="<%=precioCosto%>">
     </div>
     <div class="form-group">
         <label>Precio Venta</label>
-        <input type="number" min="1" class="form-control" required="" id="inputPrecioVenta" placeholder="Precio Venta" value="<%=precioVenta%>">
+        <input type="text" min="1" class="form-control moneda" required="" id="inputPrecioVenta" placeholder="Precio Venta" value="<%=precioVenta%>">
+    </div>
+    <div class="form-group">
+        <label>Stock Mínimo</label>
+        <input type="number" min="1" class="form-control" required="" id="inputStockMinimo" placeholder="Stock Mínimo" value="<%=stockMinimo%>">
     </div>
     <div class="form-group">
         <label>Categoría</label>
@@ -74,7 +80,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        $("#inputPrecio").priceFormat({
+        $(".moneda").priceFormat({
             prefix: '',
             centsSeparator: '.',
             thousandsSeparator: '.'
@@ -93,6 +99,7 @@
                     cantidad: $("#inputCantidad").val(),
                     precioCosto: $("#inputPrecioCosto").val(),
                     precioVenta: $("#inputPrecioVenta").val(),
+                    stockMinimo: $("#inputStockMinimo").val(),
                     idCategoria: $("#inputCategoria").val()
                 },
                 success: result

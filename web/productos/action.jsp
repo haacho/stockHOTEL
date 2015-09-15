@@ -18,6 +18,7 @@
         Integer cantidad = 1;
         Double precioCosto = 1.0;
         Double precioVenta = 1.0;
+        Integer stockMinimo = 1;
         Integer idCategoria = -1;
         if (action.equals("B")) {
             sistema.PRODUCTO_JPA_CONTROLLER.destroy(id);
@@ -28,14 +29,15 @@
             cantidad = Integer.valueOf(request.getParameter("cantidad"));
             precioCosto = Double.parseDouble(request.getParameter("precioCosto"));
             precioVenta = Double.parseDouble(request.getParameter("precioVenta"));
+            stockMinimo = Integer.valueOf(request.getParameter("stockMinimo"));
             idCategoria = Integer.valueOf(request.getParameter("idCategoria"));
         }
         if (action.equals("A")) {
-            sistema.PRODUCTO_JPA_CONTROLLER.create(codigo, descripcion, cantidad, precioCosto, precioVenta, idCategoria);
+            sistema.PRODUCTO_JPA_CONTROLLER.create(codigo, descripcion, cantidad, precioCosto, precioVenta, stockMinimo, idCategoria);
             jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto <strong>" + codigo + "</strong> agregado correctamente"));
         }
         if (action.equals("M")) {
-            sistema.PRODUCTO_JPA_CONTROLLER.edit(id, codigo, descripcion, cantidad, precioCosto, precioVenta, idCategoria);
+            sistema.PRODUCTO_JPA_CONTROLLER.edit(id, codigo, descripcion, cantidad, precioCosto, precioVenta, stockMinimo, idCategoria);
             jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto editado correctamente"));
         }
     } catch (Exception ex) {

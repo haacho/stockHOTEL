@@ -16,6 +16,7 @@
             <th>Cantidad</th>
             <th>Precio Costo</th>
             <th>Precio Venta</th>
+            <th>Stock Mínimo</th>
             <th>Categoria</th>
         </tr>
     </thead>
@@ -27,6 +28,7 @@
             <td><%=p.getCantidad()%></td>
             <td><%=StaticsMetods.parseDoubleMoneyToString(p.getPrecioCosto())%></td>
             <td><%=StaticsMetods.parseDoubleMoneyToString(p.getPrecioVenta())%></td>
+            <td><%=p.getStockMinimo()%></td>
             <td><%=p.getCategoria().getNombre()%></td>
         </tr>
         <%}%>

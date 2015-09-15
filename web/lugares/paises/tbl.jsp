@@ -4,18 +4,22 @@
     Author     : marcelo
 --%>
 
+<%@page import="modelo.Pais"%>
 <%@page import="persistencia.sistema"%>
-<%@page import="modelo.Categoria"%>
 <table class="table table-striped table-bordered table-hover" id="tbl">
     <thead>
         <tr>
             <th>Nombre</th>
+            <th>Gentilicio</th>
+            <th>Prefico Telefónico</th>
         </tr>
     </thead>
     <tbody>
-        <%for (Categoria c : sistema.CATEGORIA_JPA_CONTROLLER.findCategoriaEntities()) {%>
-        <tr idObj="<%= c.getId()%>">
-            <td><%=c.getNombre()%></td>
+        <%for (Pais p : sistema.PAIS_JPA_CONTROLLER.findPaisEntities()) {%>
+        <tr idObj="<%= p.getId()%>">
+            <td><%=p.getNombre()%></td>
+            <td><%=p.getGentilicio()%></td>
+            <td><%=p.getPrefTelefonico()%></td>
         </tr>
         <%}%>
     </tbody>
