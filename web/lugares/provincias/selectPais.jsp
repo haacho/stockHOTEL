@@ -18,6 +18,7 @@
 <script>
     $(document).ready(function () {
         loadTbl();
+        $("#divProvincias").load("lugares/provincias/principal.jsp", {idPais: -1});
     });
 
     function loadTbl() {

@@ -22,7 +22,7 @@
         Integer idCategoria = -1;
         if (action.equals("B")) {
             sistema.PRODUCTO_JPA_CONTROLLER.destroy(id);
-            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto correctamente"));
+            jsonRespuesta = StaticsMetods.gSon.toJson(new Sms(Sms.SUCCESS, "Producto eliminado correctamente"));
         } else {
             codigo = request.getParameter("codigo");
             descripcion = request.getParameter("descripcion");

@@ -11,7 +11,7 @@
                 <a href="#"><i class="fa fa-dashboard fa-fw"></i> Proveedores</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-male fa-fw"></i> Clientes</a>
+                <a href="clientes/principal.jsp"><i class="fa fa-male fa-fw"></i> Clientes</a>
             </li>
             <li>
                 <a href="#" class="dropdown-toggle"><i class="fa fa-bar-chart-o fa-fw"></i> Productos<span class="fa arrow"></span></a>

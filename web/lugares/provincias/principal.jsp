@@ -9,9 +9,7 @@
         Integer idPais = Integer.valueOf(request.getParameter("idPais"));
         if (idPais == -1) {
 %>
-<div class="alert alert-danger">
-    Seleccione un pais para visualizar sus provincias.
-</div>
+<h1>Seleccione un pais para visualizar sus provincias.</h1>
 <%} else {%>
 <h1>Provincias de <%=sistema.PAIS_JPA_CONTROLLER.findPais(idPais).getNombre()%></h1>
 <div id="divTbl"></div>
