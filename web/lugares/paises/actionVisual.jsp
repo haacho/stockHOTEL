@@ -36,7 +36,7 @@
     </div>
     <div class="form-group">
         <label>Gentilicio</label>
-        <input class="form-control" required="" id="inputGentilicio" placeholder="Ingrese el gentilicio" value="<%=gentilicio%>">
+        <input class="form-control" id="inputGentilicio" placeholder="Ingrese el gentilicio" value="<%=gentilicio%>">
     </div>
     <div class="form-group">
         <label>Pref. Telefónico</label>
